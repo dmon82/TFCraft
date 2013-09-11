@@ -15,7 +15,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
 import TFC.TFCItems;
-import TFC.Items.ItemDyeCustom;
 import TFC.TerraFirmaCraft;
 import TFC.Core.TFC_ItemHeat;
 import TFC.Entities.Mobs.EntityCowTFC;
@@ -47,136 +46,203 @@ public class TileEntityQuern extends NetworkTileEntity implements IInventory {
 						if(storage[0] != null) {
 							if(storage[0].getItem() == TFCItems.WheatGrain && (storage[1] == null || storage[1].getItem() == TFCItems.WheatGround))
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
-								if(storage[1] == null)
+								}
+								if(storage[1] == null) {
 									storage[1] = new ItemStack(TFCItems.WheatGround, 1);
-								else if(storage[1].stackSize < 64)
+								} else if(storage[1].stackSize < 64) {
 									storage[1].stackSize++;
+								}
 							}
 							else if(storage[0].getItem() == TFCItems.RyeGrain && (storage[1] == null || storage[1].getItem() == TFCItems.RyeGround))
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
-								if(storage[1] == null)
+								}
+								if(storage[1] == null) {
 									storage[1] = new ItemStack(TFCItems.RyeGround, 1);
-								else if(storage[1].stackSize < 64)
+								} else if(storage[1].stackSize < 64) {
 									storage[1].stackSize++;
+								}
 							}
 							else if(storage[0].getItem() == TFCItems.OatGrain && (storage[1] == null || storage[1].getItem() == TFCItems.OatGround))
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
-								if(storage[1] == null)
+								}
+								if(storage[1] == null) {
 									storage[1] = new ItemStack(TFCItems.OatGround, 1);
-								else if(storage[1].stackSize < 64)
+								} else if(storage[1].stackSize < 64) {
 									storage[1].stackSize++;
+								}
 							}
 							else if(storage[0].getItem() == TFCItems.BarleyGrain && (storage[1] == null || storage[1].getItem() == TFCItems.BarleyGround))
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
-								if(storage[1] == null)
+								}
+								if(storage[1] == null) {
 									storage[1] = new ItemStack(TFCItems.BarleyGround, 1);
-								else if(storage[1].stackSize < 64)
+								} else if(storage[1].stackSize < 64) {
 									storage[1].stackSize++;
+								}
 							}
 							else if(storage[0].getItem() == TFCItems.RiceGrain && (storage[1] == null || storage[1].getItem() == TFCItems.RiceGround))
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
+								}
 
-								if(storage[1] == null)
+								if(storage[1] == null) {
 									storage[1] = new ItemStack(TFCItems.RiceGround, 1);
-								else if(storage[1].stackSize < 64)
+								} else if(storage[1].stackSize < 64) {
 									storage[1].stackSize++;
+								}
 							}
 							else if(storage[0].getItem() == TFCItems.MaizeEar && (storage[1] == null || storage[1].getItem() == TFCItems.CornmealGround))
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
-								if(storage[1] == null)
+								}
+								if(storage[1] == null) {
 									storage[1] = new ItemStack(TFCItems.CornmealGround, 1);
-								else if(storage[1].stackSize < 64)
+								} else if(storage[1].stackSize < 64) {
 									storage[1].stackSize++;
+								}
 							}
 							else if(storage[0].getItem() == TFCItems.OreChunk && storage[0].getItemDamage() == 16 && 
 									(storage[1] == null || (storage[1].getItem() == TFCItems.Powder && storage[1].getItemDamage() == 1)))//Kaolinite
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
-								if(storage[1] == null)
+								}
+								if(storage[1] == null) {
 									storage[1] = new ItemStack(TFCItems.Powder, 1, 1);
-								else if(storage[1].stackSize < 64)
+								} else if(storage[1].stackSize < 64) {
 									storage[1].stackSize++;
+								}
 							}
 							else if(storage[0].getItem() == TFCItems.OreChunk && storage[0].getItemDamage() == 20 && 
 									(storage[1] == null || (storage[1].getItem() == TFCItems.Powder && storage[1].getItemDamage() == 2)))//Graphite
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
-								if(storage[1] == null)
+								}
+								if(storage[1] == null) {
 									storage[1] = new ItemStack(TFCItems.Powder, 1, 2);
-								else if(storage[1].stackSize < 64)
+								} else if(storage[1].stackSize < 64) {
 									storage[1].stackSize++;
+								}
 							}
 							else if(storage[0].getItem() == TFCItems.OreChunk && storage[0].getItemDamage() == 27 &&
 									(storage[1] == null || storage[1].getItem() == Item.redstone))
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
-								if(storage[1] == null)
+								}
+								if(storage[1] == null) {
 									storage[1] = new ItemStack(Item.redstone, 8);
-								else if(storage[1].stackSize < 56)
+								} else if(storage[1].stackSize < 56) {
 									storage[1].stackSize += 8;
+								}
 							}
 							else if(storage[0].getItem() == TFCItems.OreChunk && storage[0].getItemDamage() == 28 &&
 									(storage[1] == null || storage[1].getItem() == Item.redstone))
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
-								if(storage[1] == null)
+								}
+								if(storage[1] == null) {
 									storage[1] = new ItemStack(Item.redstone, 8);
-								else if(storage[1].stackSize < 56)
+								} else if(storage[1].stackSize < 56) {
 									storage[1].stackSize += 8;
+								}
 							}
+							/*Dyes*/
 							else if(storage[0].getItem() == Item.bone && 
-									(storage[1] == null || storage[1].getItemDamage() == 15))
+									(storage[1] == null || (storage[1].getItem().itemID == Item.dyePowder.itemID && 
+									storage[1].getItemDamage() == 15)))
 							{
-								if(storage[0].stackSize == 1)
+								if(storage[0].stackSize == 1) {
 									storage[0] = null;
-								else
+								} else {
 									storage[0].stackSize--;
-								if(storage[1] == null)
-									storage[1] = new ItemStack(Item.dyePowder, 3, 15);
-								else if(storage[1].stackSize < 61)
-									storage[1].stackSize += 3;
+								}
+								if(storage[1] == null) {
+									storage[1] = new ItemStack(Item.dyePowder, 2, 15);//White
+								} else if(storage[1].stackSize < 64) {
+									storage[1].stackSize += 2;
+								}
+							}
+							else if(storage[0].getItem() == TFCItems.OreChunk && storage[0].getItemDamage() == 34 && //Lapis
+									(storage[1] == null || (storage[1].getItem().itemID == Item.dyePowder.itemID && storage[1].getItemDamage() == 4)))
+							{
+								if(storage[0].stackSize == 1) {
+									storage[0] = null;
+								} else {
+									storage[0].stackSize--;
+								}
+								if(storage[1] == null) {
+									storage[1] = new ItemStack(Item.dyePowder,4,4); //Blue
+								} else if(storage[1].stackSize < 64) {
+									storage[1].stackSize += 4;
+								}
+							}
+							else if(storage[0].getItem() == TFCItems.OreChunk && storage[0].getItemDamage() == 9 && //Malachite
+									(storage[1] == null || (storage[1].getItem().itemID == Item.dyePowder.itemID && storage[1].getItemDamage() == 2)))
+							{
+								if(storage[0].stackSize == 1) {
+									storage[0] = null;
+								} else {
+									storage[0].stackSize--;
+								}
+								if(storage[1] == null) {
+									storage[1] = new ItemStack(Item.dyePowder,1,2); //Green
+								} else if(storage[1].stackSize < 64) {
+									storage[1].stackSize ++;
+								}
+							}
+							else if(storage[0].getItem() == TFCItems.OreChunk && storage[0].getItemDamage() == 3 && //Hematite
+									(storage[1] == null || (storage[1].getItem().itemID == Item.dyePowder.itemID && storage[1].getItemDamage() == 1)))
+							{
+								if(storage[0].stackSize == 1) {
+									storage[0] = null;
+								} else {
+									storage[0].stackSize--;
+								}
+								if(storage[1] == null) {
+									storage[1] = new ItemStack(Item.dyePowder,1,1); //Red
+								} else if(storage[1].stackSize < 64) {
+									storage[1].stackSize ++;
+								}
 							}
 						}
-						
-						if(storage[2] != null)
+
+						if(storage[2] != null) {
 							damageStackInSlot(2);
-						
+						}
+
 						/*if(storage[2].getItemDamage() == storage[2].getMaxDamage())
 							setInventorySlotContents(2, null);*/
 					}
@@ -230,7 +296,7 @@ public class TileEntityQuern extends NetworkTileEntity implements IInventory {
 			}
 		}
 	}
-	
+
 	@Override
 	public ItemStack decrStackSize(int i, int j) {
 		if(storage[i] != null) {

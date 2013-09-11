@@ -12,6 +12,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.EnumHelper;
 import TFC.API.Armor;
 import TFC.API.Metal;
+import TFC.API.TFCOptions;
 import TFC.API.TFCTabs;
 import TFC.API.Constant.Global;
 import TFC.API.Constant.TFCItemID;
@@ -675,6 +676,7 @@ public class TFCItems
 	public static Item Plum;
 	public static Item Egg;
 	public static Item EggCooked;
+	public static Item Cheese;
 
 	public static Item WheatGrain;
 	public static Item BarleyGrain;
@@ -796,6 +798,7 @@ public class TFCItems
 	public static Item StoneBrick;
 	public static Item Mortar;
 	public static Item Limewater;
+	public static Item Vinegar;
 	public static Item Hide;
 	public static Item SoakedHide;
 	public static Item ScrapedHide;
@@ -1444,6 +1447,7 @@ public class TFCItems
 		StoneBrick = (new ItemStoneBrick(TFCItemID.ItemStoneBrick2).setFolder("tools/").setUnlocalizedName("ItemStoneBrick"));
 		Mortar = new ItemTerra(TFCItemID.Mortar).setFolder("tools/").setUnlocalizedName("Mortar").setCreativeTab(TFCTabs.TFCMaterials);
 		Limewater = new ItemCustomBucket(TFCItemID.Limewater,2).setFolder("tools/").setUnlocalizedName("Lime Water").setContainerItem(WoodenBucketEmpty).setCreativeTab(TFCTabs.TFCMaterials);
+		Vinegar = new ItemCustomBucket(TFCItemID.Vinegar,2).setFolder("food/").setUnlocalizedName("Vinegar").setContainerItem(WoodenBucketEmpty).setCreativeTab(TFCTabs.TFCMaterials);
 		Hide = new ItemTerra(TFCItemID.Hide).setFolder("tools/").setUnlocalizedName("Hide").setCreativeTab(TFCTabs.TFCMaterials);
 		SoakedHide = new ItemTerra(TFCItemID.SoakedHide).setFolder("tools/").setUnlocalizedName("Soaked Hide").setCreativeTab(TFCTabs.TFCMaterials);
 		ScrapedHide = new ItemTerra(TFCItemID.ScrapedHide).setFolder("tools/").setUnlocalizedName("Scraped Hide").setCreativeTab(TFCTabs.TFCMaterials);
@@ -1549,7 +1553,7 @@ public class TFCItems
 		MaizeEar = new ItemTerraFood(TFCItemID.MaizeEar, 10, 0.4F, false, 22).setUnlocalizedName("Maize Ear");
 		Tomato = new ItemTerraFood(TFCItemID.Tomato, 15, 0.4F, false, 24).setUnlocalizedName("Tomato");
 		Potato = new ItemTerraFood(TFCItemID.Potato, 22, 0.4F, false, 25).setUnlocalizedName("Potato");
-		Onion = new ItemTerraFood(TFCItemID.Onion, 10, 0.4F, false, 27).setUnlocalizedName("Onion");
+		Onion = new ItemTerraFood(TFCItemID.Onion, 10, 0.4F, false, 27).setUnlocalizedName(TFCOptions.iDontLikeOnions?"Rutabaga":"Onion");
 		Cabbage = new ItemTerraFood(TFCItemID.Cabbage, 20, 0.4F, false, 28).setUnlocalizedName("Cabbage");
 		Garlic = new ItemTerraFood(TFCItemID.Garlic, 10, 0.4F, false, 29).setUnlocalizedName("Garlic");
 		Carrot = new ItemTerraFood(TFCItemID.Carrot, 5, 0.4F, false, 30).setUnlocalizedName("Carrot");
@@ -1561,6 +1565,7 @@ public class TFCItems
 		YellowBellPepper = new ItemTerraFood(TFCItemID.YellowBellPepper, 10, 0.4F, false, 35).setUnlocalizedName("Yellow Bell Pepper");
 		RedBellPepper = new ItemTerraFood(TFCItemID.RedBellPepper, 10, 0.4F, false, 36).setUnlocalizedName("Red Bell Pepper");
 		Squash = new ItemTerraFood(TFCItemID.Squash, 12, 0.4F, false, 37).setUnlocalizedName("Squash");
+		Cheese = new ItemTerraFood(TFCItemID.Cheese, 20, 0.6F, false, 38).setUnlocalizedName("Cheese");
 
 		WheatWhole = new ItemTerra(TFCItemID.WheatWhole).setFolder("food/").setUnlocalizedName("Wheat Whole");
 		BarleyWhole = new ItemTerra(TFCItemID.BarleyWhole).setFolder("food/").setUnlocalizedName("Barley Whole");
@@ -1609,7 +1614,7 @@ public class TFCItems
 		SeedsRice = new ItemCustomSeeds(TFCItemID.SeedsRice,11).setUnlocalizedName("Seeds Rice");
 		SeedsMaize = new ItemCustomSeeds(TFCItemID.SeedsMaize,2).setUnlocalizedName("Seeds Maize");
 		SeedsPotato = new ItemCustomSeeds(TFCItemID.SeedsPotato,13).setUnlocalizedName("Seeds Potato");
-		SeedsOnion = new ItemCustomSeeds(TFCItemID.SeedsOnion,15).setUnlocalizedName("Seeds Onion");
+		SeedsOnion = new ItemCustomSeeds(TFCItemID.SeedsOnion,15).setUnlocalizedName(TFCOptions.iDontLikeOnions?"Seeds Rutabaga":"Seeds Onion");
 		SeedsCabbage = new ItemCustomSeeds(TFCItemID.SeedsCabbage,16).setUnlocalizedName("Seeds Cabbage");
 		SeedsGarlic = new ItemCustomSeeds(TFCItemID.SeedsGarlic,17).setUnlocalizedName("Seeds Garlic");
 		SeedsCarrot = new ItemCustomSeeds(TFCItemID.SeedsCarrot,18).setUnlocalizedName("Seeds Carrot");

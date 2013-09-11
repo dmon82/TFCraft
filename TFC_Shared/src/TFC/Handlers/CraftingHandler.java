@@ -8,11 +8,13 @@ import TFC.TFCBlocks;
 import TFC.TFCItems;
 import TFC.TerraFirmaCraft;
 import TFC.Core.Recipes;
+import TFC.Core.TFC_ItemHeat;
 import TFC.Core.TFC_Sounds;
 import TFC.Core.Player.PlayerInfo;
 import TFC.Core.Player.PlayerManagerTFC;
 import TFC.Food.ItemTerraFood;
 import TFC.Items.ItemIngot;
+import TFC.Items.ItemMeltedMetal;
 import cpw.mods.fml.common.ICraftingHandler;
 
 public class CraftingHandler implements ICraftingHandler
@@ -22,7 +24,6 @@ public class CraftingHandler implements ICraftingHandler
 	public void onCrafting(EntityPlayer entityplayer, ItemStack itemstack, IInventory iinventory) 
 	{
 		int index = 0;
-
 		if(iinventory != null)
 		{
 			if(itemstack.itemID == TFCItems.StoneBrick.itemID)
@@ -54,7 +55,10 @@ public class CraftingHandler implements ICraftingHandler
 			{
 				HandleItem(entityplayer, iinventory, Recipes.Knives);
 				if (itemstack.itemID == TFCItems.Wool.itemID && !entityplayer.worldObj.isRemote){
-					entityplayer.dropItem(TFCItems.Hide.itemID, 1);
+					if(!entityplayer.inventory.addItemStackToInventory(new ItemStack(TFCItems.Hide, 1, 0))) 
+					{
+						entityplayer.entityDropItem(new ItemStack(TFCItems.Hide, 1, 0), 1);
+					}
 				}
 				else if(itemstack.itemID == TFCItems.TerraLeather.itemID){
 					boolean openGui = false;
@@ -137,6 +141,36 @@ public class CraftingHandler implements ICraftingHandler
 				{
 					entityplayer.entityDropItem(new ItemStack(TFCItems.CeramicMold, 1, 1), 1);
 				}
+				float temperature = 0;
+				for(int i = 0; i < iinventory.getSizeInventory(); i++) 
+				{       
+					if(iinventory.getStackInSlot(i) == null) 
+					{
+						continue;
+					}
+					if(iinventory.getStackInSlot(i).getItem() instanceof ItemMeltedMetal)
+					{
+						temperature = TFC_ItemHeat.GetTemperature(iinventory.getStackInSlot(i));
+					}
+				}
+				TFC_ItemHeat.SetTemperature(itemstack, temperature);				
+			}
+			else if(itemstack.getItem() instanceof ItemMeltedMetal)
+			{
+				float temperature = 0;
+				for(int i = 0; i < iinventory.getSizeInventory(); i++) 
+				{       
+					if(iinventory.getStackInSlot(i) == null) 
+					{
+						continue;
+					}
+					if(iinventory.getStackInSlot(i).getItem() instanceof ItemMeltedMetal )
+					{
+						temperature = TFC_ItemHeat.GetTemperature(iinventory.getStackInSlot(i));
+					}
+				}
+				TFC_ItemHeat.SetTemperature(itemstack, temperature);
+				
 			}
 
 			for(int i = 0; i < iinventory.getSizeInventory(); i++) 

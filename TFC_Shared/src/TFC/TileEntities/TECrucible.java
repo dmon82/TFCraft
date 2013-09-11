@@ -173,7 +173,6 @@ public class TECrucible extends NetworkTileEntity implements IInventory
 						if(currentAlloy != null && currentAlloy.outputType != null && itemToSmelt.itemID == currentAlloy.outputType.MeltedItemID)
 						{
 							this.addMetal(MetalRegistry.instance.getMetalFromItem(itemToSmelt), (short) 1);
-							currentAlloy.outputAmount++;
 							if(stackToSmelt.getItemDamage()+1 >= storage[0].getMaxDamage()) {
 								storage[0] = new ItemStack(TFCItems.CeramicMold,1,1);
 							} else {
@@ -223,8 +222,9 @@ public class TECrucible extends NetworkTileEntity implements IInventory
 				{
 					storage[1].setItemDamage(storage[1].getItemDamage()-1);
 					float inTemp =TFC_ItemHeat.GetTemperature(storage[1]);
-					float temp = Math.abs(temperature - inTemp) / 2;
+					float temp = (temperature - inTemp) / 2;
 					TFC_ItemHeat.SetTemperature(storage[1], inTemp+temp);
+					//System.out.println(temperature +", "+inTemp+", "+temp);
 					currentAlloy.outputAmount--;
 					storage[1].stackSize = 1;
 					updateGui((byte) 1);
@@ -236,6 +236,7 @@ public class TECrucible extends NetworkTileEntity implements IInventory
 				metals = new HashMap();
 				updateCurrentAlloy();
 				this.updateGui((byte) 2);
+				currentAlloy = null;
 			}
 
 			if(storage[1] != null && storage[1].stackSize <= 0) {
