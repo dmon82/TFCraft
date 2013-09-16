@@ -61,6 +61,7 @@ import TFC.GUI.GuiBlastFurnace;
 import TFC.GUI.GuiBlueprint;
 import TFC.GUI.GuiCalendar;
 import TFC.GUI.GuiChestTFC;
+import TFC.GUI.GuiChickenBreedingPen;
 import TFC.GUI.GuiCrucible;
 import TFC.GUI.GuiFirepit;
 import TFC.GUI.GuiFoodPrep;
@@ -126,6 +127,7 @@ import TFC.TileEntities.TileEntityAnvil;
 import TFC.TileEntities.TileEntityBarrel;
 import TFC.TileEntities.TileEntityBellows;
 import TFC.TileEntities.TileEntityChestTFC;
+import TFC.TileEntities.TileEntityChickenBreedingPen;
 import TFC.TileEntities.TileEntityFirepit;
 import TFC.TileEntities.TileEntityFoodPrep;
 import TFC.TileEntities.TileEntityForge;
@@ -314,7 +316,8 @@ public class ClientProxy extends CommonProxy
 		}
 		case 24:
 		{
-			return null;//was metallurgy table
+			//return null;//was metallurgy table
+                        return new GuiChickenBreedingPen(player.inventory, (TileEntityChickenBreedingPen)te, world, x, y, z);
 		}
 		case 25:
 		{

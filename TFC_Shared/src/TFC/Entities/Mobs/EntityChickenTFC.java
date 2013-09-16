@@ -13,8 +13,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import TFC.TFCItems;
 import TFC.API.Entities.IAnimal;
+import TFC.API.TFCOptions;
 import TFC.Core.TFC_Core;
 import TFC.Core.TFC_Time;
+import TFC.Entities.AI.EntityAIMateTFC;
+import TFC.Entities.AI.EntityChickenBreedAI;
 
 public class EntityChickenTFC extends EntityChicken implements IAnimal
 {
@@ -26,6 +29,7 @@ public class EntityChickenTFC extends EntityChicken implements IAnimal
 	protected long hasMilkTime;
 	protected int age;
 	protected float mateSizeMod;
+        protected boolean pregnant;
 	public float size_mod;
 	public boolean inLove;
 
@@ -36,7 +40,9 @@ public class EntityChickenTFC extends EntityChicken implements IAnimal
 		super(par1World);
 		this.setSize(0.3F, 0.7F);
 		this.timeUntilNextEgg = this.rand.nextInt(6000) + 24000;
+                this.tasks.addTask(2, new EntityAIMateTFC(this, this.worldObj, 0.2f));
 		this.tasks.addTask(3, new EntityAITempt(this, 1.2F, TFCItems.WheatGrain.itemID, false));
+                this.tasks.addTask(3, new EntityChickenBreedAI(this));
 		//this.tasks.addTask(6, this.aiEatGrass);
 
 		hunger = 168000;
@@ -123,7 +129,13 @@ public class EntityChickenTFC extends EntityChicken implements IAnimal
 		if (isAdult() && getGender() == GenderEnum.FEMALE && !this.worldObj.isRemote && --this.timeUntilNextEgg == 0)
 		{
 			this.worldObj.playSoundAtEntity(this, "mob.chicken.plop", 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
-			this.dropItem(Item.egg.itemID, 1);
+			
+                        if (this.isPregnant())
+                            this.dropItem(TFCItems.EggFertilized.itemID, 1);
+                        else
+                            this.dropItem(Item.egg.itemID, 1);
+                        // if sitting on breeding pen, add to its inventory if there's room.
+                        
 			this.timeUntilNextEgg = this.rand.nextInt(6000) + 24000;
 		}
 		/**
@@ -168,6 +180,7 @@ public class EntityChickenTFC extends EntityChicken implements IAnimal
 		nbt.setInteger ("Hunger", hunger);
 		nbt.setFloat("MateSize", mateSizeMod);
 		nbt.setInteger("Age", getBirthDay());
+                nbt.setBoolean("Pregnant", isPregnant());
 	}
 
 	/**
@@ -183,6 +196,7 @@ public class EntityChickenTFC extends EntityChicken implements IAnimal
 		hunger = nbt.getInteger ("Hunger");
 		mateSizeMod = nbt.getFloat("MateSize");
 		this.dataWatcher.updateObject(15, nbt.getInteger ("Age"));
+                pregnant = nbt.getBoolean("Pregnant");
 	}
 
 	/**
@@ -266,9 +280,13 @@ public class EntityChickenTFC extends EntityChicken implements IAnimal
 	@Override
 	public boolean isPregnant() 
 	{
-		return false;
+		return pregnant;
 	}
 
+        public void setPregnant() {
+            pregnant = true;
+        }
+        
 	@Override
 	public EntityLiving getEntity() 
 	{
@@ -288,7 +306,8 @@ public class EntityChickenTFC extends EntityChicken implements IAnimal
 	@Override
 	public void mate(IAnimal otherAnimal) 
 	{
-
+            EntityChickenTFC chicken = (this.getGender() == GenderEnum.FEMALE) ? this : (EntityChickenTFC)otherAnimal;
+            chicken.setPregnant();
 	}
 
 	@Override
