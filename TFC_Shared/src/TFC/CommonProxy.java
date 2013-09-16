@@ -18,6 +18,7 @@ import TFC.Containers.ContainerAnvil;
 import TFC.Containers.ContainerBarrel;
 import TFC.Containers.ContainerBlastFurnace;
 import TFC.Containers.ContainerChestTFC;
+import TFC.Containers.ContainerChickenBreedingPen;
 import TFC.Containers.ContainerCrucible;
 import TFC.Containers.ContainerFirepit;
 import TFC.Containers.ContainerFoodPrep;
@@ -65,6 +66,7 @@ import TFC.TileEntities.TileEntityBarrel;
 import TFC.TileEntities.TileEntityBellows;
 import TFC.TileEntities.TileEntityBloom;
 import TFC.TileEntities.TileEntityChestTFC;
+import TFC.TileEntities.TileEntityChickenBreedingPen;
 import TFC.TileEntities.TileEntityCrop;
 import TFC.TileEntities.TileEntityDetailed;
 import TFC.TileEntities.TileEntityEarlyBloomery;
@@ -153,6 +155,8 @@ public class CommonProxy implements IGuiHandler
 			ModLoader.registerTileEntity(TileEntityBellows.class, "Bellows");
 		}
 
+                ModLoader.registerTileEntity(TileEntityChickenBreedingPen.class, "Chicken Breeding Pen");
+                
 		EntityRegistry.registerGlobalEntityID(EntityWolfTFC.class, "Wolf", ModLoader.getUniqueEntityId(), 0xffffff, 0xaaaaaa);
 		EntityRegistry.registerGlobalEntityID(EntityCowTFC.class, "Cow", ModLoader.getUniqueEntityId(), 0xffffff, 0xbbbbbb);
 		EntityRegistry.registerGlobalEntityID(EntitySheepTFC.class, "Sheep", ModLoader.getUniqueEntityId(), 0xffffff, 0xbbbbbb);
@@ -387,7 +391,8 @@ public class CommonProxy implements IGuiHandler
 		}
 		case 24:
 		{
-			return null;//was metallurgy table
+                    return new ContainerChickenBreedingPen(player.inventory, (TileEntityChickenBreedingPen)te, world, x, y, z);
+			//return null;//was metallurgy table
 		}
 		case 25:
 		{

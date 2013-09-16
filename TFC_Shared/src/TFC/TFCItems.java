@@ -53,6 +53,7 @@ import TFC.Items.ItemTerra;
 import TFC.Items.ItemTuyere;
 import TFC.Items.ItemUnfinishedArmor;
 import TFC.Items.ItemBlocks.ItemWoodDoor;
+import TFC.Items.ItemFertilizedEgg;
 import TFC.Items.Pottery.ItemPotteryBase;
 import TFC.Items.Pottery.ItemPotteryJug;
 import TFC.Items.Pottery.ItemPotteryLargeVessel;
@@ -676,6 +677,7 @@ public class TFCItems
 	public static Item Plum;
 	public static Item Egg;
 	public static Item EggCooked;
+        public static Item EggFertilized;
 	public static Item Cheese;
 
 	public static Item WheatGrain;
@@ -1544,6 +1546,7 @@ public class TFCItems
 		Peach = new ItemTerraFood(TFCItemID.Peach, 12, 0.1F, false, 9).setUnlocalizedName("Peach");
 		Plum = new ItemTerraFood(TFCItemID.Plum, 10, 0.1F, false, 10).setUnlocalizedName("Plum");
 		EggCooked = new ItemTerraFood(TFCItemID.EggCooked, 25, 0.4F, false, 11).setUnlocalizedName("Egg Cooked");
+                EggFertilized = new ItemFertilizedEgg(TFCItemID.EggFertilized);
 
 		WheatGrain = new ItemTerraFood(TFCItemID.WheatGrain, 1, 0.4F, false, 12).setUnlocalizedName("Wheat Grain");
 		BarleyGrain = new ItemTerraFood(TFCItemID.BarleyGrain, 1, 0.4F, false, 14).setUnlocalizedName("Barley Grain");

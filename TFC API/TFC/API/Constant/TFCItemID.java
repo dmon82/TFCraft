@@ -738,6 +738,7 @@ public class TFCItemID {
 	//additional foods + food stuffs
 	public static int Cheese 					= 19114;
 	public static int Vinegar					= 19115;
+        public static int EggFertilized                                 = 19116;
 
 
 	static Configuration config;

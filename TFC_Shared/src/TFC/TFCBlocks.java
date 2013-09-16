@@ -30,6 +30,7 @@ import TFC.Blocks.Devices.BlockBarrel;
 import TFC.Blocks.Devices.BlockBellows;
 import TFC.Blocks.Devices.BlockBlastFurnace;
 import TFC.Blocks.Devices.BlockChestTFC;
+import TFC.Blocks.Devices.BlockChickenBreedingPen;
 import TFC.Blocks.Devices.BlockCrucible;
 import TFC.Blocks.Devices.BlockEarlyBloomery;
 import TFC.Blocks.Devices.BlockFirepit;
@@ -222,6 +223,8 @@ public class TFCBlocks
 	public static Block EarlyBloomery;
 	public static Block Bloom;
 	public static Block Crucible;
+        
+        public static Block ChickenBreedingPen;
 
 	public static void RegisterBlocks()
 	{
@@ -336,6 +339,9 @@ public class TFCBlocks
 		GameRegistry.registerBlock(Thatch, TFC.Items.ItemBlocks.ItemTerraBlock.class, "Thatch");
 		GameRegistry.registerBlock(Tuyere, "Tuyere");
 		GameRegistry.registerBlock(Crucible, TFC.Items.ItemBlocks.ItemCrucible.class, "Crucible");
+                
+                GameRegistry.registerBlock(ChickenBreedingPen, "ChickenBreedingPen");
+                
 	}
 
 	public static void LoadBlocks()
@@ -522,6 +528,8 @@ public class TFCBlocks
 		TFCBlocks.Tuyere = new BlockTuyere(TFCBlockID.Tuyere).setUnlocalizedName("Tuyere");
 		TFCBlocks.Crucible = new BlockCrucible(TFCBlockID.Crucible).setUnlocalizedName("Crucible").setHardness(4.0f);
 
+                TFCBlocks.ChickenBreedingPen = new BlockChickenBreedingPen(TFCBlockID.ChickenBreedingPen).setUnlocalizedName("Chicken Breeding Pen").setHardness(1f);
+                
 		MinecraftForge.setBlockHarvestLevel(TFCBlocks.StoneIgIn, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(TFCBlocks.StoneIgEx, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(TFCBlocks.StoneSed, "pickaxe", 0);

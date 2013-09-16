@@ -124,6 +124,7 @@ public class TFCBlockID
 	public static int Tuyere					= 2066;
 	public static int Crucible					= 2067;
 
+        public static int ChickenBreedingPen                            = 2112;
 	
 	static Configuration config;
 	
